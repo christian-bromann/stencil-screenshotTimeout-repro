@@ -28,5 +28,8 @@ describe('my-component', () => {
     component.setProperty('middle', 'Earl');
     await page.waitForChanges();
     expect(element.textContent).toEqual(`Hello, World! I'm James Earl Quincy`);
+
+    const results = await page.compareScreenshot('My Component (...is beautiful. Look at it!)', {fullPage: false});
+    expect(results).toMatchScreenshot({ allowableMismatchedPixels: 100 })
   });
 });
